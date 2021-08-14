@@ -1,6 +1,6 @@
 import "./InfixCnE.css";
 import React from "react";
-import { useState } from "react/cjs/react.development";
+import { useState } from "react";
 import {infixToPrefix, reverse} from "./functions";
 import {infixToPostfix} from "./functions";
 const InfixCnE=()=>{
