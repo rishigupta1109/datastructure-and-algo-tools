@@ -1,7 +1,8 @@
-{"homepage": "https://rishigupta1109.github.io/datastructure-and-algo-tools",
+{
   "name": "dsnatools",
+  "homepage": "https://rishigupta1109.github.io/datastructure-and-algo-tools",
   "version": "0.1.0",
-  "private": false,
+  "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
