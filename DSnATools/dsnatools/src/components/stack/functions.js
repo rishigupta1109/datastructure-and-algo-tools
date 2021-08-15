@@ -11,6 +11,7 @@ class Stack{
    }
    pop(){
      let x=this.arr[this.top][0];
+     this.arr.pop();
      --this.top;
      return x;
    }
@@ -50,7 +51,7 @@ const reverse=(s)=>{
          else{
            let x=stack.top;
            for(let i=0;i<=x;i++){
-            if(stack.arr[stack.top][1]<arr[1]||stack.arr[stack.top][0]==')'){
+            if(stack.arr[stack.top][1]<=arr[1]||stack.arr[stack.top][0]==')'){
               break;
             }
              string=string.concat(stack.pop());
@@ -67,7 +68,7 @@ const reverse=(s)=>{
          else{
            let x=stack.top;
            for(let i=0;i<=x;i++){
-            if(stack.arr[stack.top][1]<arr[1]||stack.arr[stack.top][0]==')'){
+            if(stack.arr[stack.top][1]<=arr[1]||stack.arr[stack.top][0]==')'){
               break;
             }
                let y=stack.pop();
@@ -86,7 +87,7 @@ const reverse=(s)=>{
          else{
            let x=stack.top;
            for(let i=0;i<=x;i++){
-            if(stack.arr[stack.top][1]<arr[1]||stack.arr[stack.top][0]==')'){
+            if(stack.arr[stack.top][1]<=arr[1]||stack.arr[stack.top][0]==')'){
               break;
             }
              string=string.concat(stack.pop());
@@ -219,7 +220,73 @@ const reverse=(s)=>{
  
  }
 
+ const prefixEvaluator=(s)=>{
+    let stack=new Stack(s.length);
+    let Answer_object={outputString:"",outputStack:[]};
+    for(let i=(s.length-1);i>=0;i--){
+      if(s[i]==='+'||s[i]==='-'||s[i]==='*'||s[i]==='/'||s[i]==='^'){
+        let a=Number(stack.pop());
+        let b=Number(stack.pop());
+        let c;
+        switch (s[i]){
+          case '+' :c=a+b;
+          break;
+          case '-': c=a-b;
+          break;
+          case '*': c=a*b;
+          break;
+          case '/': c=a/b;
+          break;
+          case '^': c=a^b;
+          break;
+          default : break;
+        }
+        stack.push([c]);
+      }
+      else{
+        stack.push([s[i]]);
+      }
+      Answer_object.outputStack.push([...stack.arr]);
+    }
+    Answer_object.outputString=stack.pop();
+    return Answer_object;
+ }
+ 
+ const postfixEvaluator=(s)=>{
+  let stack=new Stack(s.length);
+  let Answer_object={outputString:"",outputStack:[]};
+  for(let i=0;i<s.length;i++){
+    if(s[i]==='+'||s[i]==='-'||s[i]==='*'||s[i]==='/'||s[i]==='^'){
+      let a=Number(stack.pop());
+      let b=Number(stack.pop());
+      let c;
+      switch (s[i]){
+        case '+' :c=b+a;
+        break;
+        case '-': c=b-a;
+        break;
+        case '*': c=b*a;
+        break;
+        case '/': c=b/a;
+        break;
+        case '^': c=b^a;
+        break;
+        default : break;
+      }
+      stack.push([c]);
+    }
+    else{
+      stack.push([s[i]]);
+    }
+      Answer_object.outputStack.push([...stack.arr]);
+  }
+  Answer_object.outputString=stack.pop();
+  return Answer_object;
 
+}
+
+export {prefixEvaluator};
+export {postfixEvaluator};
  export {infixToPrefix};
  export {infixToPostfix};
 export {reverse};

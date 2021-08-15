@@ -68,7 +68,7 @@ return(
 <button onClick={infixiiclickHandler}> Convert</button>
 <h3>Postfix statement :{infixToPostfixStatement.outputString} </h3>
 </div>
-<div className="rightpart">
+<div className="rightpart ">
 <table>
     <tr>
       <th>Output String</th>
